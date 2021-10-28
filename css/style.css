@@ -1,280 +1,161 @@
 body{
-    font-family: 'Alegreya Sans SC', serif;
-    margin: 0;
-    padding: 0;
-    font-size: 16pt; /* test for this! Make all sizes em or rem */
-    background-color:#f1f1f1;
-    background-image: url('../images/concrete_seamless.png')
-  }
+  font-family: 'Alegreya Sans SC', serif;
+  background-color:#f1f1f1;
+  background-image: url('/images/concrete_seamless.png');
+  display: flex;
+  flex-direction: column;
+}
+a, a:visited {
+  color: blue;
+}
 
-  h1{
-    font-size: 2em;
-    text-align: center;
-    line-height: 2;
-  }
-  
-  h2{
-    font-size: 1.5em;
-    text-align: center;
-    padding: 5px;
-  }
-  
-  p {
-    padding: 0 30px;
-  }
-  
-  a.skip{
-    background: #ffffff;
-    left: 0;
-    padding: 6px;
-    position: absolute;
-    top: -40px;
-    -webkit-transition: top 1s ease-out;
-    transition: top 1s ease-out;
-    z-index: 1;
-  }
-  
-  a.skip:focus{
-    top: 20px;
-    color: #000000;
-    text-decoration-style: solid;
-  }
-  
-  *:focus{
-    border: 2px solid #000000;
-  }
-  
-  footer{
-    background-color: #000000;
-    color: #ffffff;
-    padding: 30px;
-    text-align: center;
-  }
-  
-  /* Keyframes for animation */
-  @-webkit-keyframes logo_wiggle{
-    from{
+header img{
+  width: 500px;
+    animation-name: logomove;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+}
+
+/* 關鍵影格(@keyframe) */
+@keyframes logomove {
+  from{
       top:-100;
-      width: 50px;
+      width:50px;
       opacity: 0;
-    }
-    to{
+  }
+  to{
       top: 0;
       width: 425px;
       opacity: 1;
-    }
   }
-  
-  @keyframes logo_wiggle{
-    from{
-      width: 50px;
-    }
-    to{
-      width: 425px;
-    }
-  } 
-  
-  #logo{
-    -webkit-animation-name: logo_wiggle;
-            animation-name: logo_wiggle;
-    -webkit-animation-duration: 5s;
-            animation-duration: 5s;
-    -webkit-animation-iteration-count: 1;
-            animation-iteration-count: 1;
-  }
-  
-  /* Cards */
-  .pricing{
-    min-height: 475px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card {
-    flex-basis: 450px;
-    margin: 12px;
-    background: #ffffff;
-    border-radius: 7px;
-    padding: 0 0 50px 0;
-  }
-  
-  /* select header elements that are direct children of a card class */
-  .card > header{
-    background: #288080;
-    border: 2px solid #45ADAD;
-    padding: 20px 0;
-    border-radius: 7px 7px 0 0;
-  }
-  
-  .card > ul{
-    list-style: none;
-    padding: 0;
-  }
-  
-  .card > ul li {
-    width: 90%;
-    margin: 20px auto;
-  }
-  
-  .card button{
-    width: 90%;
-    height: 40px;
-    border: 0;
-    margin-left: 12px;
-    border-radius: 7px;
-    background: #288080;
-    color: #ffffff;
-    font-size: 1em;
-  }
-  
-  .card h3{
-    font-size: 4em;
-    color: #ffffff;
-    text-align: center;
-  }
-  
-  .card_big{
-    -webkit-transform: initial;
-            transform: initial;
-  }
-  
-  /* Gallery */
-  /* edit the css for the gallery class to use flex to match the example */
-  .gallery{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-
-  
-  .gallery > img{
-    border: 10px #50C7C7 solid;
-    margin: 10px;
-    width: 300px;
-  }
-
-  
-  /* Navbar */
-  /* edit the css for the header to use flex to match the example */
-  header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    border-bottom: 3px solid #50C7C7;
-  }
-
-  
-  /* Edit the css for the nav_links class to use flex to match our example */
-  .nav_links{
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-  }
-
-  
-  .nav_item a{
-    color: black;
-    text-decoration: none;
-  }
-  
-  .nav_item a:hover, a:focus{
-    color: #50C7C7;
-    text-decoration: underline;
-    -webkit-text-decoration-style: dotted;
-            text-decoration-style: dotted;
-  }
-  
-
-
-
-
-
-  /* For screen-size which is greater than 850px */
-  /* desktop styles starts*/
-  @media screen and (min-width:850px) { 
-    body>header{
-        flex-direction: row;
-        justify-content: space-between;
-        position: sticky;
-        top: 0;
-    }
-    header{
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    .nav_links{
-        flex-direction: row;
-    }
-    .pricing{
-        flex-direction: row;
-    }
-    .card{
-        flex-basis: 250px;
-    }
-  }
-  /* desktop styles ends*/
-
-
-
-  @media print{
-    body{
-        background-image: none;
-    }
-    nav{
-        width: 100%;
-        }
-
-    body>header{
-        flex-direction: column;
-    }
-
-    .nav_links{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    .gallery{
-        display: none;
-    }
-    .card{
-        flex-basis: 250px;
-        border: solid 2px #45ADDD;
-        align-self: flex-end;
-        flex-direction: row;
-    }
-    .pricing{
-        align-self: flex-end;
-        flex-direction: row;
-    }
-
-    #gallery{
-        display: none;
-    }
-
-    .card li:nth-child(1)::before {
-        content: "👍";
-      }
-    .card li:nth-child(2)::after {
-        content: "👍";
-      }
-    .card li:nth-child(3)::before {
-        content: "👍";
-      }
 }
-  
-  @media screen and (prefers-reduced-motion: reduce){
-    html{
-      scroll-behavior: auto;
-    }
-    
-    #logo{
-      -webkit-animation: none;
-              animation: none;
-      -webkit-transition: none;
-              transition: none;
-    }
+
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.nav_links{
+  display: flex;
+  flex-direction: column;
+}
+
+.card header{
+  background: #288088;
+  border: solid 2px #45ADAD;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 7px 7px 0 0;
+}
+
+.pricing{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card{
+  flex-basis: 450px;
+}
+
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.gallery img{
+  border: solid 10px #50C7C7;
+  margin: 10px;
+  width: 300px;
+
+
+}
+
+
+/* desktop styles starts*/
+@media screen and (min-width:850px) { 
+  body>header{
+      flex-direction: row;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
   }
+  header{
+      flex-direction: row;
+      justify-content: space-between;
+  }
+  .nav_links{
+      flex-direction: row;
+  }
+  .pricing{
+      flex-direction: row;
+  }
+  .card{
+      flex-basis: 250px;
+  }
+}
+/* desktop styles ends*/
+
+
+
+/* print styles sarts*/
+/*@media print*/
+@media print{
+  body{
+      background-image: none;
+  }
+  nav{
+      width: 100%;
+      }
+
+  body>header{
+      flex-direction: column;
+  }
+
+  .nav_links{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+  }
+  .gallery{
+      display: none;
+  }
+  .card{
+      flex-basis: 250px;
+      border: solid 2px #45ADDD;
+      align-self: flex-end;
+      flex-direction: row;
+  }
+  .pricing{
+      align-self: flex-end;
+      flex-direction: row;
+  }
+
+  #gallery{
+      display: none;
+  }
+
+  .card li:nth-child(1)::before {
+      content: "👍";
+    }
+  .card li:nth-child(2)::after {
+      content: "👍";
+    }
+  .card li:nth-child(3)::before {
+      content: "👍";
+    }
+}
+/* print styles ends*/
+
+
+
+/* prefers-reduced-motion*/
+@media (prefers-reduced-motion) {
+  header img {
+    animation: none;
+  }
+}
