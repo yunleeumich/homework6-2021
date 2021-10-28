@@ -1,12 +1,12 @@
 body{
-    font-family: 'Alegreya Sans SC', sans-serif;
+    font-family: 'Alegreya Sans SC', serif;
     margin: 0;
     padding: 0;
     font-size: 16pt; /* test for this! Make all sizes em or rem */
     background-color:#f1f1f1;
     background-image: url('../images/concrete_seamless.png')
   }
-  
+
   h1{
     font-size: 2em;
     text-align: center;
@@ -54,10 +54,14 @@ body{
   /* Keyframes for animation */
   @-webkit-keyframes logo_wiggle{
     from{
+      top:-100;
       width: 50px;
+      opacity: 0;
     }
     to{
+      top: 0;
       width: 425px;
+      opacity: 1;
     }
   }
   
@@ -89,7 +93,7 @@ body{
   }
   
   .card {
-    flex-basis: 400px;
+    flex-basis: 450px;
     margin: 12px;
     background: #ffffff;
     border-radius: 7px;
@@ -143,14 +147,15 @@ body{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    min-height: 600px;
   }
+
   
   .gallery > img{
     border: 10px #50C7C7 solid;
     margin: 10px;
     width: 300px;
   }
+
   
   /* Navbar */
   /* edit the css for the header to use flex to match the example */
@@ -161,6 +166,7 @@ body{
     background: #ffffff;
     border-bottom: 3px solid #50C7C7;
   }
+
   
   /* Edit the css for the nav_links class to use flex to match our example */
   .nav_links{
@@ -168,6 +174,7 @@ body{
     flex-direction: column;
     list-style: none;
   }
+
   
   .nav_item a{
     color: black;
@@ -181,54 +188,83 @@ body{
             text-decoration-style: dotted;
   }
   
+
+
+
+
+
   /* For screen-size which is greater than 850px */
-  @media screen and (min-width: 850px){
-    /* Cards */
-    .card {
-      flex-basis: 250px;
+  /* desktop styles starts*/
+  @media screen and (min-width:850px) { 
+    body>header{
+        flex-direction: row;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
     }
-  
-    .card_big{
-      -webkit-transform: scaleX(1.12);
-              transform: scaleX(1.12);
-    }
-  
-    /* Navbar */
     header{
-      flex-direction: row;
-      justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
     }
-  
     .nav_links{
-      flex-direction: row;
+        flex-direction: row;
     }
-  
-    .nav_item a{
-      padding: 10px;
-    }
-  }
-  
-  @media print { 
-    body{
-      color: #000000;
-      background: none;
-      background-image: none;
-      background-color: #ffffff;
-    }
-    
-    /* Cards */
     .pricing{
-      align-items: initial;
+        flex-direction: row;
     }
-  
-    .card {
-      flex-basis: 200px;
-    }
-  
-    #gallery, .gallery{
-      display: none;
+    .card{
+        flex-basis: 250px;
     }
   }
+  /* desktop styles ends*/
+
+
+
+  @media print{
+    body{
+        background-image: none;
+    }
+    nav{
+        width: 100%;
+        }
+
+    body>header{
+        flex-direction: column;
+    }
+
+    .nav_links{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .gallery{
+        display: none;
+    }
+    .card{
+        flex-basis: 250px;
+        border: solid 2px #45ADDD;
+        align-self: flex-end;
+        flex-direction: row;
+    }
+    .pricing{
+        align-self: flex-end;
+        flex-direction: row;
+    }
+
+    #gallery{
+        display: none;
+    }
+
+    .card li:nth-child(1)::before {
+        content: "👍";
+      }
+    .card li:nth-child(2)::after {
+        content: "👍";
+      }
+    .card li:nth-child(3)::before {
+        content: "👍";
+      }
+}
   
   @media screen and (prefers-reduced-motion: reduce){
     html{
